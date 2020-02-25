@@ -1,0 +1,8 @@
+import groovy.json.JsonSlurper
+
+def url = "https://api.github.com/repos/lookyflashbecki/test/branches"
+def api = new URL(url)
+def branchesRaw = new JsonSlurper().parse(api)
+def branches = branchesRaw.collect {it -> it.get("name")}
+
+return branches
